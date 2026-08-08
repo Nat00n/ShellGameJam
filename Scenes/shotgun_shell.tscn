@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bnhgwgcr0ewn1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvmlq"]
-size = Vector2(56, 84)
+[sub_resource type="CircleShape2D" id="CircleShape2D_tvmlq"]
+radius = 50.0
 
 [node name="Model" type="Node2D" unique_id=187674140]
 
@@ -27,4 +27,4 @@ offset_bottom = 78.0
 color = Color(1, 0.8666667, 0.18039216, 1)
 
 [node name="ShapeRef" type="CollisionShape2D" parent="." unique_id=798896173]
-shape = SubResource("RectangleShape2D_tvmlq")
+shape = SubResource("CircleShape2D_tvmlq")

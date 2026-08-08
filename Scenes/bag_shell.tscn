@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dt50w32wodok"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_btsr6"]
-radius = 50.039986
+radius = 50.0
 
 [node name="Model" type="Node2D" unique_id=187674140]
 

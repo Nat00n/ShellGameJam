@@ -19,6 +19,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.9371519, 0.6635085, 0.5516452, 1)
 
+[node name="ColorRect4" type="ColorRect" parent="ColorRect3" unique_id=771222564]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -13.0
+offset_right = 42.0
+offset_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.34436435, 0.16028604, 0.08178335, 1)
+
 [node name="ShapeRef" type="CollisionShape2D" parent="." unique_id=798896173]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_v2nl6")

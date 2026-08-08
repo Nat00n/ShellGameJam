@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bio1ukmuqp3e0"]
+
+[ext_resource type="Script" uid="uid://dk481yib0b53l" path="res://Scripts/snail.gd" id="1_nsjvy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t040g"]
+size = Vector2(123.75, 99.25)
+
+[node name="Snail" type="Node2D" unique_id=335318603]
+script = ExtResource("1_nsjvy")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=260056710]
+offset_right = 116.0
+offset_bottom = 40.0
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=1431965154]
+layout_mode = 0
+offset_left = 79.0
+offset_top = -37.0
+offset_right = 123.0
+offset_bottom = 28.0
+
+[node name="ColorRect3" type="ColorRect" parent="ColorRect" unique_id=1590233349]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -56.0
+offset_right = 93.0
+offset_bottom = 15.0
+color = Color(0.9371519, 0.6635085, 0.5516452, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=688802712]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=184886862]
+position = Vector2(61.125, -10.375)
+shape = SubResource("RectangleShape2D_t040g")

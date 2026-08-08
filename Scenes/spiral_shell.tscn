@@ -11,10 +11,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.5
-offset_top = -39.0
-offset_right = 65.0
-offset_bottom = 48.0
+offset_left = -45.25
+offset_top = -43.5
+offset_right = 45.25
+offset_bottom = 43.5
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.6471529, 0.43466467, 0.28032157, 1)
@@ -36,5 +36,4 @@ rotation = 0.7853982
 color = Color(0.83517355, 0.60620975, 0.44129643, 1)
 
 [node name="ShapeRef" type="CollisionShape2D" parent="." unique_id=798896173]
-position = Vector2(20, 4)
 shape = SubResource("CircleShape2D_btsr6")

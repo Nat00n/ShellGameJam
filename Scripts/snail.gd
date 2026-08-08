@@ -26,6 +26,11 @@ var is_floating: bool = false
 var float_timer: float = 0.0
 var float_gravity_scale: float = 0.2
 
+var is_speed_boosted: bool = false
+var speed_boost_timer: float = 0.0
+var speed_boost_accel_mult: float = 1.0
+var speed_boost_friction_mult: float = 1.0
+
 var shell_radius: float = 25.0
 
 var body_tween: Tween
@@ -45,11 +50,22 @@ func _process(delta: float) -> void:
 		float_timer -= delta
 		if float_timer <= 0.0:
 			is_floating = false
+			print("Shell effect expired: ", current_upgrade.upgrade_name if current_upgrade else "?")
+			consume_upgrade()
+
+	if is_speed_boosted:
+		speed_boost_timer -= delta
+		if speed_boost_timer <= 0.0:
+			is_speed_boosted = false
+			print("Shell effect expired: ", current_upgrade.upgrade_name if current_upgrade else "?")
+			consume_upgrade()
 
 func get_effective_gravity() -> float:
 	return gravity * (float_gravity_scale if is_floating else 1.0)
 
 func equip_shell_upgrade(upgrade: ShellUpgrade) -> void:
+	is_floating = false
+	is_speed_boosted = false
 	current_upgrade = upgrade
 	_apply_model(upgrade)
 	if is_in_shell_state:
@@ -57,6 +73,7 @@ func equip_shell_upgrade(upgrade: ShellUpgrade) -> void:
 
 func consume_upgrade() -> void:
 	is_floating = false
+	is_speed_boosted = false
 	equip_shell_upgrade(base_shell)
 
 func _apply_model(upgrade: ShellUpgrade) -> void:
@@ -84,22 +101,33 @@ func apply_shell_collision() -> void:
 func revert_to_base_collision() -> void:
 	collision_shape.shape = default_collision_shape
 	collision_shape.position = default_collision_position
-
+	
 func activate_shell_ability() -> void:
 	if not current_upgrade or current_upgrade.ability == ShellUpgrade.Ability.NONE:
 		return
 
+	print("Used shell ability: ", current_upgrade.upgrade_name)
+
 	match current_upgrade.ability:
 		ShellUpgrade.Ability.BOOST:
-			velocity += current_upgrade.boost_force * facing_dir
+			var angle := deg_to_rad(current_upgrade.boost_launch_angle_deg)
+			var boost := Vector2(cos(angle) * facing_dir, -sin(angle)) * current_upgrade.boost_force.length()
+			velocity += boost
+			consume_upgrade()   # one-shot, gone immediately
+
 		ShellUpgrade.Ability.FLOAT:
 			is_floating = true
 			float_timer = current_upgrade.float_duration
-		ShellUpgrade.Ability.SPEED_UP:
-			roll_speed *= current_upgrade.roll_speed_multiplier
-			velocity.x = roll_speed
+			velocity.y += current_upgrade.float_y_velocity_kick
+			# no consume_upgrade() here — stays equipped until timer expires
 
-	consume_upgrade()
+		ShellUpgrade.Ability.SPEED_UP:
+			is_speed_boosted = true
+			speed_boost_timer = current_upgrade.speed_up_duration
+			speed_boost_accel_mult = current_upgrade.speed_up_accel_mult
+			speed_boost_friction_mult = current_upgrade.speed_up_friction_mult
+			velocity.x = current_upgrade.speed_up_instant_roll_speed * facing_dir
+			# no consume_upgrade() here either
 
 func play_retract_animation() -> void:
 	if body_tween:
@@ -145,3 +173,4 @@ func reset_shell_rotation() -> void:
 
 func update_facing_visual() -> void:
 	body_root.scale.x = absf(body_root.scale.x) * facing_dir
+	shell_root.scale.x = absf(shell_root.scale.x) * facing_dir

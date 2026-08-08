@@ -39,7 +39,8 @@ func physics_update(delta: float) -> void:
 		var tangent := Vector2(floor_normal.y, -floor_normal.x) * player.facing_dir
 		var alignment := tangent.dot(Vector2.DOWN)
 
-		player.velocity += tangent * (player.gravity * alignment) * delta
+		var accel_mult := player.speed_boost_accel_mult if player.is_speed_boosted else 1.0
+		player.velocity += tangent * (player.gravity * alignment * accel_mult) * delta
 	else:
 		player.velocity.y += player.get_effective_gravity() * delta
 

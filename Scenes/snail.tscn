@@ -18,7 +18,7 @@ script = ExtResource("1_nsjvy")
 base_shell = ExtResource("2_5dokh")
 
 [node name="BodyRoot" type="Node2D" parent="." unique_id=1456996978]
-position = Vector2(6, 18)
+position = Vector2(0, 18)
 
 [node name="TEMPModelRect" type="ColorRect" parent="BodyRoot" unique_id=260056710]
 anchors_preset = 8
@@ -43,7 +43,6 @@ offset_bottom = 28.0
 [node name="ShellRoot" type="Node2D" parent="." unique_id=1357483542]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=184886862]
-position = Vector2(10, 3)
 shape = SubResource("CircleShape2D_uqs8f")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1596078712 node_paths=PackedStringArray("initial_state")]

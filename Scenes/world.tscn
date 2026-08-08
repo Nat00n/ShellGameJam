@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://csj1x7ncof15d" path="res://Scenes/shell_pickup.tscn" id="2_5a7ea"]
 [ext_resource type="Script" uid="uid://bmag77uugv6s1" path="res://Scripts/home_goal.gd" id="2_fo5ed"]
 [ext_resource type="Resource" uid="uid://bg6kd524dkffp" path="res://Resources/shotgun_shell.tres" id="3_5a7ea"]
+[ext_resource type="Resource" uid="uid://q56shsf1vq7s" path="res://Resources/spiral_shell.tres" id="5_k7acu"]
 [ext_resource type="PackedScene" uid="uid://bhr6taryalgjs" path="res://Scenes/camera.tscn" id="6_5ukr8"]
+[ext_resource type="Resource" uid="uid://b3hlvh178j4nm" path="res://Resources/bag_shell.tres" id="6_5v1tr"]
 
 [node name="World" type="Node2D" unique_id=204577044]
 script = ExtResource("1_8j60k")
@@ -30,6 +32,14 @@ script = ExtResource("2_fo5ed")
 [node name="ShellPickup" parent="Pickups" unique_id=789797842 instance=ExtResource("2_5a7ea")]
 position = Vector2(277, 313)
 upgrade = ExtResource("3_5a7ea")
+
+[node name="ShellPickup2" parent="Pickups" unique_id=902780424 instance=ExtResource("2_5a7ea")]
+position = Vector2(946, 205)
+upgrade = ExtResource("5_k7acu")
+
+[node name="ShellPickup3" parent="Pickups" unique_id=1189689166 instance=ExtResource("2_5a7ea")]
+position = Vector2(566, 230)
+upgrade = ExtResource("6_5v1tr")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1939988979]
 

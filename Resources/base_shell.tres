@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ShellUpgrade" format=3 uid="uid://bhp2lqknqk75j"]
+
+[ext_resource type="Script" uid="uid://htm57wt6gkiy" path="res://Scripts/shell_upgrade.gd" id="1_sre23"]
+[ext_resource type="PackedScene" uid="uid://d1npt2k783kra" path="res://Scenes/base_shell.tscn" id="1_ta4iu"]
+
+[resource]
+script = ExtResource("1_sre23")
+upgrade_name = "Base Shell"
+model_scene = ExtResource("1_ta4iu")
+metadata/_custom_type_script = "uid://htm57wt6gkiy"

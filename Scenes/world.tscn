@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://27kojxw1jmrd"]
+
+[ext_resource type="Script" uid="uid://djihoguxqsypg" path="res://Scripts/world.gd" id="1_8j60k"]
+[ext_resource type="PackedScene" uid="uid://bio1ukmuqp3e0" path="res://Scenes/snail.tscn" id="1_go701"]
+[ext_resource type="PackedScene" uid="uid://csj1x7ncof15d" path="res://Scenes/shell_pickup.tscn" id="2_5a7ea"]
+[ext_resource type="Script" uid="uid://bmag77uugv6s1" path="res://Scripts/home_goal.gd" id="2_fo5ed"]
+[ext_resource type="Resource" uid="uid://bg6kd524dkffp" path="res://Resources/shotgun_shell.tres" id="3_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://bhr6taryalgjs" path="res://Scenes/camera.tscn" id="6_5ukr8"]
+
+[node name="World" type="Node2D" unique_id=204577044]
+script = ExtResource("1_8j60k")
+
+[node name="TerrainStaticBody2D" type="StaticBody2D" parent="." unique_id=560596423]
+
+[node name="TerrainCollisionPolygon2D" type="CollisionPolygon2D" parent="TerrainStaticBody2D" unique_id=1627229694]
+polygon = PackedVector2Array(0, 2, 0, 2, -154, 369, -31, 612, 284, 717, 816, 718, 1040, 678, 1141, 542, 1130, 416, 1043, 255, 959, 277, 910, 313, 854, 353, 771, 370, 699, 379, 625, 341, 566, 303, 481, 295, 429, 314, 398, 356, 342, 379, 231, 383, 124, 355, 93, 331, 38, 269, 12, 171, -1, 62, 3, 23)
+
+[node name="TerrainVisual" type="Polygon2D" parent="." unique_id=1439992346]
+
+[node name="StartPoint" type="Marker2D" parent="." unique_id=1451549483]
+position = Vector2(146, 95)
+
+[node name="Home" type="Area2D" parent="." unique_id=2112126650]
+script = ExtResource("2_fo5ed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Home" unique_id=1738492201]
+
+[node name="Pickups" type="Node" parent="." unique_id=1416320917]
+
+[node name="ShellPickup" parent="Pickups" unique_id=789797842 instance=ExtResource("2_5a7ea")]
+position = Vector2(277, 313)
+upgrade = ExtResource("3_5a7ea")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1939988979]
+
+[node name="TimeLabel" type="Label" parent="HUD" unique_id=949597042]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+
+[node name="Snail" parent="." unique_id=335318603 instance=ExtResource("1_go701")]
+position = Vector2(719, 237)
+
+[node name="Camera2D" parent="." unique_id=1123971087 node_paths=PackedStringArray("target") instance=ExtResource("6_5ukr8")]
+target = NodePath("../Snail")

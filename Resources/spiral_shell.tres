@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShellUpgrade" format=3 uid="uid://q56shsf1vq7s"]
+
+[ext_resource type="PackedScene" uid="uid://b4q025xl26elk" path="res://Scenes/spiral_shell.tscn" id="1_7h7fp"]
+[ext_resource type="Script" uid="uid://htm57wt6gkiy" path="res://Scripts/shell_upgrade.gd" id="1_lcv8r"]
+
+[resource]
+script = ExtResource("1_lcv8r")
+upgrade_name = "Spiral Shell"
+model_scene = ExtResource("1_7h7fp")
+ability = 3
+metadata/_custom_type_script = "uid://htm57wt6gkiy"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShellUpgrade" format=3 uid="uid://bg6kd524dkffp"]
+
+[ext_resource type="Script" uid="uid://htm57wt6gkiy" path="res://Scripts/shell_upgrade.gd" id="1_dhemb"]
+[ext_resource type="PackedScene" uid="uid://bnhgwgcr0ewn1" path="res://Scenes/shotgun_shell.tscn" id="2_xp3vm"]
+
+[resource]
+script = ExtResource("1_dhemb")
+upgrade_name = "Shotgun Shell"
+model_scene = ExtResource("2_xp3vm")
+ability = 1
+metadata/_custom_type_script = "uid://htm57wt6gkiy"

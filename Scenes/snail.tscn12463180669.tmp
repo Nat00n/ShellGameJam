@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bio1ukmuqp3e0"]
+
+[ext_resource type="Script" uid="uid://dk481yib0b53l" path="res://Scripts/snail.gd" id="1_nsjvy"]
+[ext_resource type="Script" uid="uid://drf8mqk7u34m7" path="res://Scripts/StateMachine.gd" id="2_fnba0"]
+[ext_resource type="Script" uid="uid://di36y56h6uvmk" path="res://Scripts/idle_state.gd" id="3_casb8"]
+[ext_resource type="Script" uid="uid://cwdvbhewn43pl" path="res://Scripts/shell_state.gd" id="4_casb8"]
+[ext_resource type="Script" uid="uid://b3ralpw6qca8y" path="res://Scripts/move_state.gd" id="5_uqs8f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t040g"]
+size = Vector2(123.75, 80.25)
+
+[node name="Snail" type="CharacterBody2D" unique_id=1416113544]
+script = ExtResource("1_nsjvy")
+
+[node name="TEMPModelRect" type="ColorRect" parent="." unique_id=260056710]
+offset_right = 116.0
+offset_bottom = 40.0
+
+[node name="ColorRect2" type="ColorRect" parent="TEMPModelRect" unique_id=1431965154]
+layout_mode = 0
+offset_left = 79.0
+offset_top = -37.0
+offset_right = 123.0
+offset_bottom = 28.0
+
+[node name="ColorRect3" type="ColorRect" parent="TEMPModelRect" unique_id=1590233349]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -56.0
+offset_right = 93.0
+offset_bottom = 15.0
+color = Color(0.9371519, 0.6635085, 0.5516452, 1)
+
+[node name="StateMachine" type="Node" parent="." unique_id=1596078712]
+script = ExtResource("2_fnba0")
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1887492399]
+script = ExtResource("3_casb8")
+
+[node name="ShellState" type="Node" parent="StateMachine" unique_id=338908323]
+script = ExtResource("4_casb8")
+
+[node name="MoveState" type="Node" parent="StateMachine" unique_id=1942357031]
+script = ExtResource("5_uqs8f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=184886862]
+position = Vector2(61.125, -0.875)
+shape = SubResource("RectangleShape2D_t040g")

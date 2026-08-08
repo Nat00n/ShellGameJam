@@ -1,34 +1,62 @@
 [gd_scene format=3 uid="uid://bio1ukmuqp3e0"]
 
 [ext_resource type="Script" uid="uid://dk481yib0b53l" path="res://Scripts/snail.gd" id="1_nsjvy"]
+[ext_resource type="Resource" uid="uid://bhp2lqknqk75j" path="res://Resources/base_shell.tres" id="2_5dokh"]
+[ext_resource type="Script" uid="uid://drf8mqk7u34m7" path="res://Scripts/StateMachine.gd" id="2_fnba0"]
+[ext_resource type="Script" uid="uid://di36y56h6uvmk" path="res://Scripts/idle_state.gd" id="3_casb8"]
+[ext_resource type="Script" uid="uid://cwdvbhewn43pl" path="res://Scripts/shell_state.gd" id="4_casb8"]
+[ext_resource type="Script" uid="uid://b3ralpw6qca8y" path="res://Scripts/move_state.gd" id="5_uqs8f"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t040g"]
-size = Vector2(123.75, 99.25)
+[sub_resource type="CircleShape2D" id="CircleShape2D_uqs8f"]
+radius = 56.0
 
-[node name="Snail" type="Node2D" unique_id=335318603]
+[node name="Snail" type="CharacterBody2D" unique_id=1416113544]
 script = ExtResource("1_nsjvy")
+base_shell = ExtResource("2_5dokh")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=260056710]
-offset_right = 116.0
-offset_bottom = 40.0
+[node name="BodyRoot" type="Node2D" parent="." unique_id=1456996978]
+position = Vector2(8.3, 38.925)
 
-[node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=1431965154]
+[node name="TEMPModelRect" type="ColorRect" parent="BodyRoot" unique_id=260056710]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -20.0
+offset_right = 58.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="BodyRoot/TEMPModelRect" unique_id=1431965154]
 layout_mode = 0
 offset_left = 79.0
 offset_top = -37.0
 offset_right = 123.0
 offset_bottom = 28.0
 
-[node name="ColorRect3" type="ColorRect" parent="ColorRect" unique_id=1590233349]
-layout_mode = 0
-offset_left = 11.0
-offset_top = -56.0
-offset_right = 93.0
-offset_bottom = 15.0
-color = Color(0.9371519, 0.6635085, 0.5516452, 1)
+[node name="ShellRoot" type="Node2D" parent="." unique_id=1357483542]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=688802712]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=184886862]
+position = Vector2(10, 3)
+shape = SubResource("CircleShape2D_uqs8f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=184886862]
-position = Vector2(61.125, -10.375)
-shape = SubResource("RectangleShape2D_t040g")
+[node name="StateMachine" type="Node" parent="." unique_id=1596078712 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_fnba0")
+initial_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1887492399 node_paths=PackedStringArray("move_state", "shell_state")]
+script = ExtResource("3_casb8")
+move_state = NodePath("../MoveState")
+shell_state = NodePath("../ShellState")
+
+[node name="ShellState" type="Node" parent="StateMachine" unique_id=338908323 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("4_casb8")
+idle_state = NodePath("../IdleState")
+
+[node name="MoveState" type="Node" parent="StateMachine" unique_id=1942357031 node_paths=PackedStringArray("idle_state", "shell_state")]
+script = ExtResource("5_uqs8f")
+idle_state = NodePath("../IdleState")
+shell_state = NodePath("../ShellState")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShellUpgrade" format=3 uid="uid://b3hlvh178j4nm"]
+
+[ext_resource type="PackedScene" uid="uid://dt50w32wodok" path="res://Scenes/bag_shell.tscn" id="1_c75n1"]
+[ext_resource type="Script" uid="uid://htm57wt6gkiy" path="res://Scripts/shell_upgrade.gd" id="1_uc6qa"]
+
+[resource]
+script = ExtResource("1_uc6qa")
+upgrade_name = "Bag Shell"
+model_scene = ExtResource("1_c75n1")
+ability = 2
+metadata/_custom_type_script = "uid://htm57wt6gkiy"

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://d1npt2k783kra"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v2nl6"]
+radius = 50.0
+
+[node name="Model" type="Node2D" unique_id=187674140]
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=1112124855]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -35.5
+offset_right = 41.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9371519, 0.6635085, 0.5516452, 1)
+
+[node name="ShapeRef" type="CollisionShape2D" parent="." unique_id=798896173]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_v2nl6")

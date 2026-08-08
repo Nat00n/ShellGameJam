@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b4q025xl26elk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_btsr6"]
+radius = 50.039986
+
+[node name="Model" type="Node2D" unique_id=187674140]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1721968168]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.5
+offset_top = -39.0
+offset_right = 65.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6471529, 0.43466467, 0.28032157, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=968648356]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.75
+offset_top = -63.5
+offset_right = 87.75
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+color = Color(0.83517355, 0.60620975, 0.44129643, 1)
+
+[node name="ShapeRef" type="CollisionShape2D" parent="." unique_id=798896173]
+position = Vector2(20, 4)
+shape = SubResource("CircleShape2D_btsr6")

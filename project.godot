@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SnailShell"
-run/main_scene="uid://27kojxw1jmrd"
+run/main_scene="uid://cla88800obssm"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [display]

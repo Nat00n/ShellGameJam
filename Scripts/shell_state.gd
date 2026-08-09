@@ -36,11 +36,13 @@ func physics_update(delta: float) -> void:
 		just_hopped = false
 	elif player.is_on_floor():
 		var floor_normal := player.get_floor_normal()
-		var tangent := Vector2(floor_normal.y, -floor_normal.x) * player.facing_dir
+		var tangent := Vector2(-floor_normal.y, floor_normal.x) * player.facing_dir
 		var alignment := tangent.dot(Vector2.DOWN)
 
-		var accel_mult := player.speed_boost_accel_mult if player.is_speed_boosted else 1.0
-		player.velocity += tangent * (player.gravity * alignment * accel_mult) * delta
+		if player.is_speed_boosted:
+			player.velocity = tangent * player.speed_boost_roll_speed
+		else:
+			player.velocity += tangent * (player.gravity * alignment) * delta
 	else:
 		player.velocity.y += player.get_effective_gravity() * delta
 

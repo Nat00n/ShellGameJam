@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bio1ukmuqp3e0" path="res://Scenes/snail.tscn" id="1_go701"]
 [ext_resource type="PackedScene" uid="uid://csj1x7ncof15d" path="res://Scenes/shell_pickup.tscn" id="2_5a7ea"]
 [ext_resource type="Script" uid="uid://bmag77uugv6s1" path="res://Scripts/home_goal.gd" id="2_fo5ed"]
+[ext_resource type="PackedScene" uid="uid://bvvyi3r0p1sak" path="res://Scenes/death_box.tscn" id="3_0fj1v"]
 [ext_resource type="Resource" uid="uid://bg6kd524dkffp" path="res://Resources/shotgun_shell.tres" id="3_5a7ea"]
 [ext_resource type="Resource" uid="uid://q56shsf1vq7s" path="res://Resources/spiral_shell.tres" id="5_k7acu"]
 [ext_resource type="PackedScene" uid="uid://bhr6taryalgjs" path="res://Scenes/camera.tscn" id="6_5ukr8"]
 [ext_resource type="Resource" uid="uid://b3hlvh178j4nm" path="res://Resources/bag_shell.tres" id="6_5v1tr"]
+[ext_resource type="PackedScene" uid="uid://y6veddyy8165" path="res://Scenes/pause_menu.tscn" id="9_5v1tr"]
 
 [node name="World" type="Node2D" unique_id=204577044]
 script = ExtResource("1_8j60k")
@@ -26,6 +28,12 @@ position = Vector2(146, 95)
 script = ExtResource("2_fo5ed")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Home" unique_id=1738492201]
+
+[node name="DeathBoxes" type="Node" parent="." unique_id=1975530672]
+
+[node name="DeathBox" parent="DeathBoxes" unique_id=95898560 instance=ExtResource("3_0fj1v")]
+position = Vector2(1207, 477.00003)
+scale = Vector2(16.325, 10.025)
 
 [node name="Pickups" type="Node" parent="." unique_id=1416320917]
 
@@ -67,3 +75,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.32503468, 0.5708423, 1.92523e-07, 1)
+
+[node name="PauseMenu" parent="." unique_id=704669719 instance=ExtResource("9_5v1tr")]
+visible = false

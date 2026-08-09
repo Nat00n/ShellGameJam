@@ -4,17 +4,21 @@ extends Node2D
 @onready var snail: Snail = $Snail
 @onready var time_label: Label = $HUD/TimeLabel
 @onready var transition_rect: ColorRect = $HUD/TransitionRect
+@onready var pause_menu: CanvasLayer = $PauseMenu
+@onready var hud: CanvasLayer = $HUD
 
 var elapsed_time: float = 0.0
 var timer_running: bool = false
 
 @export var restart_hold_time: float = 2.0
 var restart_held_time: float = 0.0
+var is_restarting: bool = false
 
 @export var transition_duration: float = 0.5
 @export var transition_spin: float = TAU
 
 func _ready() -> void:
+	hud.visible = true
 	transition_rect.pivot_offset = transition_rect.size / 2.0
 	_start_level()
 
@@ -36,6 +40,7 @@ func _on_home_goal_reached_home() -> void:
 	timer_running = false
 
 func _start_level() -> void:
+	pause_menu.is_locked = true
 	snail.global_position = start_point.global_position
 	get_tree().paused = true
 	elapsed_time = 0.0
@@ -52,10 +57,12 @@ func _start_level() -> void:
 	tween.finished.connect(_on_intro_finished)
 
 func _on_intro_finished() -> void:
+	pause_menu.is_locked = false
 	get_tree().paused = false
 	timer_running = true
 
 func _do_restart() -> void:
+	pause_menu.is_locked = true
 	get_tree().paused = true
 	timer_running = false
 
@@ -71,3 +78,10 @@ func _do_restart() -> void:
 
 func _reset_and_reopen() -> void:
 	get_tree().reload_current_scene()
+
+func trigger_death_restart() -> void:
+	if is_restarting:
+		return
+	is_restarting = true
+	restart_held_time = 0.0
+	_do_restart()

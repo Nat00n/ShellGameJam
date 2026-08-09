@@ -30,6 +30,9 @@ var is_speed_boosted: bool = false
 var speed_boost_timer: float = 0.0
 var speed_boost_accel_mult: float = 1.0
 var speed_boost_friction_mult: float = 1.0
+var speed_boost_roll_speed: float = 0.0
+
+@export var speed_boost_spin_speed: float = 10.0
 
 var shell_radius: float = 25.0
 
@@ -55,6 +58,8 @@ func _process(delta: float) -> void:
 
 	if is_speed_boosted:
 		speed_boost_timer -= delta
+		if not is_in_shell_state:
+			shell_root.rotation += speed_boost_spin_speed * facing_dir * delta
 		if speed_boost_timer <= 0.0:
 			is_speed_boosted = false
 			print("Shell effect expired: ", current_upgrade.upgrade_name if current_upgrade else "?")
@@ -125,7 +130,8 @@ func activate_shell_ability() -> void:
 			speed_boost_timer = current_upgrade.speed_up_duration
 			speed_boost_accel_mult = current_upgrade.speed_up_accel_mult
 			speed_boost_friction_mult = current_upgrade.speed_up_friction_mult
-			velocity.x = current_upgrade.speed_up_instant_roll_speed * facing_dir
+			speed_boost_roll_speed = current_upgrade.speed_up_instant_roll_speed
+			velocity.x = speed_boost_roll_speed * facing_dir
 
 func play_retract_animation() -> void:
 	if body_tween:

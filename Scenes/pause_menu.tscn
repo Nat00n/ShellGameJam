@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://y6veddyy8165"]
+
+[ext_resource type="Script" uid="uid://u48jav3wveef" path="res://Scripts/pause_menu.gd" id="1_emv3i"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=704669719]
+script = ExtResource("1_emv3i")
+
+[node name="MainButtons" type="VBoxContainer" parent="." unique_id=645117892]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -60.0
+offset_right = 128.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="MainButtons" unique_id=1647177193]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Resume"
+
+[node name="Padding" type="Control" parent="MainButtons" unique_id=599857983]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="OptionsButton" type="Button" parent="MainButtons" unique_id=514464246]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Options"
+
+[node name="Padding2" type="Control" parent="MainButtons" unique_id=151573097]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="ReturnButton" type="Button" parent="MainButtons" unique_id=1245669895]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Return To Menu"
+
+[node name="Options" type="VBoxContainer" parent="." unique_id=191071695]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -258.0
+offset_top = -94.0
+offset_right = 258.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options" unique_id=1233374099]
+layout_mode = 2
+
+[node name="Padding" type="Control" parent="Options/HBoxContainer" unique_id=358916008]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/HBoxContainer" unique_id=1033363915]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "~ Volume ~"
+
+[node name="Padding2" type="Control" parent="Options/HBoxContainer" unique_id=721952206]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="AudioSlider" type="HSlider" parent="Options/HBoxContainer" unique_id=1010201032]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+
+[node name="Padding3" type="Control" parent="Options/HBoxContainer" unique_id=895523830]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Padding" type="Control" parent="Options" unique_id=947029466]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="Options" unique_id=285268206]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "~ Back ~"

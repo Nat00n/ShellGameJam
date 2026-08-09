@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://cla88800obssm"]
+
+[ext_resource type="Script" uid="uid://c6n7cwlpvnhsu" path="res://Scripts/start_menu.gd" id="1_jgtwh"]
+[ext_resource type="PackedScene" uid="uid://bio1ukmuqp3e0" path="res://Scenes/snail.tscn" id="1_juhg0"]
+
+[node name="StartMenu" type="CanvasLayer" unique_id=2133682344]
+script = ExtResource("1_jgtwh")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1375528630]
+
+[node name="TerrainStaticBody2D" type="StaticBody2D" parent="Visuals" unique_id=1274787353]
+
+[node name="TerrainCollisionPolygon2D" type="CollisionPolygon2D" parent="Visuals/TerrainStaticBody2D" unique_id=644694505]
+position = Vector2(102, 82)
+polygon = PackedVector2Array(0, 2, 0, 2, -154, 369, -31, 612, 284, 717, 816, 718, 1040, 678, 1141, 542, 1130, 416, 1043, 255, 959, 277, 910, 313, 854, 353, 771, 370, 699, 379, 625, 341, 566, 303, 481, 295, 429, 314, 398, 356, 342, 379, 231, 383, 124, 355, 93, 331, 38, 269, 12, 171, -1, 62, 3, 23)
+
+[node name="Snail" parent="Visuals" unique_id=1416113544 instance=ExtResource("1_juhg0")]
+position = Vector2(275, 325)
+
+[node name="Title" type="Control" parent="." unique_id=964175928]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 100.0
+offset_right = 20.0
+offset_bottom = 140.0
+grow_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="Title" unique_id=860996867]
+layout_mode = 0
+offset_left = -329.0
+offset_top = -38.0
+offset_right = 328.0
+offset_bottom = 191.0
+color = Color(0.5219626, 0.6188458, 0.3641741, 1)
+
+[node name="MainButtons" type="HBoxContainer" parent="." unique_id=1338100300]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 140.0
+offset_bottom = 236.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="StartButton" type="Button" parent="MainButtons" unique_id=217736073]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "~ Start ~"
+
+[node name="Padding" type="Control" parent="MainButtons" unique_id=493159553]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="ExtrasButton" type="Button" parent="MainButtons" unique_id=144261643]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "~ Extras ~"
+
+[node name="Padding2" type="Control" parent="MainButtons" unique_id=379310078]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="MainButtons" unique_id=1714591067]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "~ Exit ~"
+
+[node name="Extras" type="Control" parent="." unique_id=333000158]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Extras" unique_id=850106806]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 66.0
+offset_right = 950.0
+offset_bottom = 296.0
+theme_override_font_sizes/font_size = 48
+text = "This Game Was Developed By Nat00n"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BackButton" type="Button" parent="Extras" unique_id=378351001]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = 140.0
+offset_right = 131.0
+offset_bottom = 236.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "~ Back ~"

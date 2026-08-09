@@ -2,7 +2,7 @@
 class_name Snail
 extends CharacterBody2D
 
-@export var move_speed: float = 100.0
+@export var move_speed: float = 150.0
 @export var gravity: float = 900.0
 @export var air_control: float = 8.0
 @export var roll_friction: float = 15.0
@@ -103,7 +103,7 @@ func revert_to_base_collision() -> void:
 	collision_shape.position = default_collision_position
 	
 func activate_shell_ability() -> void:
-	if not current_upgrade or current_upgrade.ability == ShellUpgrade.Ability.NONE:
+	if not current_upgrade or current_upgrade.ability == ShellUpgrade.Ability.NONE or is_floating or is_speed_boosted:
 		return
 
 	print("Used shell ability: ", current_upgrade.upgrade_name)
@@ -113,13 +113,12 @@ func activate_shell_ability() -> void:
 			var angle := deg_to_rad(current_upgrade.boost_launch_angle_deg)
 			var boost := Vector2(cos(angle) * facing_dir, -sin(angle)) * current_upgrade.boost_force.length()
 			velocity += boost
-			consume_upgrade()   # one-shot, gone immediately
+			consume_upgrade()
 
 		ShellUpgrade.Ability.FLOAT:
 			is_floating = true
 			float_timer = current_upgrade.float_duration
 			velocity.y += current_upgrade.float_y_velocity_kick
-			# no consume_upgrade() here — stays equipped until timer expires
 
 		ShellUpgrade.Ability.SPEED_UP:
 			is_speed_boosted = true
@@ -127,7 +126,6 @@ func activate_shell_ability() -> void:
 			speed_boost_accel_mult = current_upgrade.speed_up_accel_mult
 			speed_boost_friction_mult = current_upgrade.speed_up_friction_mult
 			velocity.x = current_upgrade.speed_up_instant_roll_speed * facing_dir
-			# no consume_upgrade() here either
 
 func play_retract_animation() -> void:
 	if body_tween:

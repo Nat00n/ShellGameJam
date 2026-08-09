@@ -41,7 +41,14 @@ upgrade = ExtResource("5_k7acu")
 position = Vector2(566, 230)
 upgrade = ExtResource("6_5v1tr")
 
+[node name="Snail" parent="." unique_id=335318603 instance=ExtResource("1_go701")]
+position = Vector2(146, 96)
+
+[node name="Camera2D" parent="." unique_id=1123971087 node_paths=PackedStringArray("target") instance=ExtResource("6_5ukr8")]
+target = NodePath("../Snail")
+
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1939988979]
+visible = false
 
 [node name="TimeLabel" type="Label" parent="HUD" unique_id=949597042]
 anchors_preset = 5
@@ -53,8 +60,10 @@ offset_bottom = 23.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 
-[node name="Snail" parent="." unique_id=335318603 instance=ExtResource("1_go701")]
-position = Vector2(719, 237)
-
-[node name="Camera2D" parent="." unique_id=1123971087 node_paths=PackedStringArray("target") instance=ExtResource("6_5ukr8")]
-target = NodePath("../Snail")
+[node name="TransitionRect" type="ColorRect" parent="HUD" unique_id=1770355220]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32503468, 0.5708423, 1.92523e-07, 1)

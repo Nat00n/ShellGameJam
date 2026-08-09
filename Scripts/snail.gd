@@ -133,12 +133,14 @@ func play_retract_animation() -> void:
 	if body_tween:
 		body_tween.kill()
 
-	body_root.scale = Vector2.ONE
+	body_root.scale = Vector2(absf(body_root.scale.x) * facing_dir, 1.0)
 	body_root.rotation = 0.0
+
+	var shrink_target := Vector2(0.2 * facing_dir, 0.2)
 
 	body_tween = create_tween()
 	body_tween.set_parallel(true)
-	body_tween.tween_property(body_root, "scale", Vector2(0.2, 0.2), 0.35)\
+	body_tween.tween_property(body_root, "scale", shrink_target, 0.35)\
 		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	body_tween.tween_property(body_root, "rotation", deg_to_rad(120), 0.35)
 	body_tween.tween_property(body_root, "visible", false, 0.7)
@@ -146,13 +148,15 @@ func play_retract_animation() -> void:
 func play_emerge_animation() -> void:
 	if body_tween:
 		body_tween.kill()
-	
+
 	body_root.visible = true
 
 	body_root.rotation = 0.0
 
+	var target_scale := Vector2(1.0 * facing_dir, 1.0)
+
 	body_tween = create_tween()
-	body_tween.tween_property(body_root, "scale", Vector2.ONE, 0.35)\
+	body_tween.tween_property(body_root, "scale", target_scale, 0.25)\
 		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 func align_body_to_floor(delta: float) -> void:
@@ -164,7 +168,8 @@ func align_body_to_floor(delta: float) -> void:
 		self.rotation = lerp_angle(self.rotation, 0.0, 5.0 * delta)
 
 func spin_shell(delta: float) -> void:
-	shell_root.rotation += (roll_speed / shell_radius) * delta
+	var dir := signf(velocity.x) if absf(velocity.x) > 1.0 else facing_dir
+	shell_root.rotation += (roll_speed / shell_radius) * dir * delta
 
 func reset_shell_rotation() -> void:
 	var tween := create_tween()

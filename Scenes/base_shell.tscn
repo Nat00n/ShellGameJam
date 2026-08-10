@@ -1,11 +1,20 @@
 [gd_scene format=3 uid="uid://d1npt2k783kra"]
 
+[ext_resource type="Texture2D" uid="uid://cibj4khvkscer" path="res://Assets/Models/Base_shell.png" id="1_7ehn4"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_v2nl6"]
 radius = 50.0
 
 [node name="Model" type="Node2D" unique_id=187674140]
 
+[node name="ShellModel" type="Sprite2D" parent="." unique_id=1072838165]
+texture_filter = 1
+scale = Vector2(1.815, 1.815)
+texture = ExtResource("1_7ehn4")
+offset = Vector2(-1.9, -1.9)
+
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=1112124855]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

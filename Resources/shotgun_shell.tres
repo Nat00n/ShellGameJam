@@ -8,5 +8,6 @@ script = ExtResource("1_dhemb")
 upgrade_name = "Shotgun Shell"
 model_scene = ExtResource("2_xp3vm")
 ability = 1
-boost_force = Vector2(0, -600)
+boost_force = Vector2(0, -900)
+boost_launch_angle_deg = 30.0
 metadata/_custom_type_script = "uid://htm57wt6gkiy"

@@ -4,8 +4,9 @@ extends CharacterBody2D
 
 @export var move_speed: float = 150.0
 @export var gravity: float = 900.0
-@export var air_control: float = 8.0
 @export var roll_friction: float = 15.0
+@export var friction: float = 300.0
+@export var float_air_control: float = 200.0
 
 @export var base_shell: ShellUpgrade
 
@@ -31,12 +32,17 @@ var speed_boost_timer: float = 0.0
 var speed_boost_accel_mult: float = 1.0
 var speed_boost_friction_mult: float = 1.0
 var speed_boost_roll_speed: float = 0.0
+var just_boosted: bool = false
 
 @export var speed_boost_spin_speed: float = 10.0
 
 var shell_radius: float = 25.0
 
 var body_tween: Tween
+
+const EXPLOSION = preload("uid://cxkcqimverw3l")
+const SPRIAL_SOUND = preload("uid://mvteyl2ha0sp")
+
 
 func _ready() -> void:
 	default_collision_shape = collision_shape.shape
@@ -46,9 +52,6 @@ func _ready() -> void:
 	_apply_model(current_upgrade)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("use_shell"):
-		activate_shell_ability()
-
 	if is_floating:
 		float_timer -= delta
 		if float_timer <= 0.0:
@@ -64,6 +67,13 @@ func _process(delta: float) -> void:
 			is_speed_boosted = false
 			print("Shell effect expired: ", current_upgrade.upgrade_name if current_upgrade else "?")
 			consume_upgrade()
+	
+	if not is_in_shell_state:
+		align_body_to_floor(delta)
+
+func _physics_process(_delta: float) -> void:
+	if Input.is_action_just_pressed("use_shell"):
+		activate_shell_ability()
 
 func get_effective_gravity() -> float:
 	return gravity * (float_gravity_scale if is_floating else 1.0)
@@ -115,8 +125,14 @@ func activate_shell_ability() -> void:
 
 	match current_upgrade.ability:
 		ShellUpgrade.Ability.BOOST:
+			AudioManager.play_sfx(EXPLOSION)
 			var angle := deg_to_rad(current_upgrade.boost_launch_angle_deg)
 			var boost := Vector2(cos(angle) * facing_dir, -sin(angle)) * current_upgrade.boost_force.length()
+
+			if is_on_floor():
+				velocity.y = minf(velocity.y, -120.0)
+				just_boosted = true
+
 			velocity += boost
 			consume_upgrade()
 
@@ -126,6 +142,7 @@ func activate_shell_ability() -> void:
 			velocity.y += current_upgrade.float_y_velocity_kick
 
 		ShellUpgrade.Ability.SPEED_UP:
+			AudioManager.play_sfx(SPRIAL_SOUND)
 			is_speed_boosted = true
 			speed_boost_timer = current_upgrade.speed_up_duration
 			speed_boost_accel_mult = current_upgrade.speed_up_accel_mult
@@ -167,9 +184,9 @@ func align_body_to_floor(delta: float) -> void:
 	if is_on_floor():
 		var floor_normal := get_floor_normal()
 		var target_rotation := floor_normal.angle() + PI / 2.0
-		self.rotation = lerp_angle(self.rotation, target_rotation, 10.0 * delta)
+		self.rotation = lerp_angle(self.rotation, target_rotation, 5.0 * delta)
 	else:
-		self.rotation = lerp_angle(self.rotation, 0.0, 5.0 * delta)
+		self.rotation = lerp_angle(self.rotation, 0.0, 1.0 * delta)
 
 func spin_shell(delta: float) -> void:
 	var dir := signf(velocity.x) if absf(velocity.x) > 1.0 else facing_dir

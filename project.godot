@@ -14,10 +14,19 @@ config/name="SnailShell"
 run/main_scene="uid://cla88800obssm"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout="uid://drsmxloh1yv4m"
+
+[autoload]
+
+AudioManager="*uid://b72b4v5nqjhlk"
+
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -58,4 +67,5 @@ pause={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"

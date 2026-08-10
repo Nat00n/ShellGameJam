@@ -1,11 +1,20 @@
 [gd_scene format=3 uid="uid://bnhgwgcr0ewn1"]
 
+[ext_resource type="Texture2D" uid="uid://dpcj0uqhyfdi8" path="res://Assets/Models/Shotgun_shell.png" id="1_rvduq"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_tvmlq"]
 radius = 50.0
 
 [node name="Model" type="Node2D" unique_id=187674140]
 
+[node name="ShellModel" type="Sprite2D" parent="." unique_id=1865000244]
+rotation = -2.211332
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("1_rvduq")
+offset = Vector2(-1.9, -1.9)
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1721968168]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

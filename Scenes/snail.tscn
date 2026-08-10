@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://bhp2lqknqk75j" path="res://Resources/base_shell.tres" id="2_5dokh"]
 [ext_resource type="Script" uid="uid://drf8mqk7u34m7" path="res://Scripts/StateMachine.gd" id="2_fnba0"]
 [ext_resource type="Script" uid="uid://di36y56h6uvmk" path="res://Scripts/idle_state.gd" id="3_casb8"]
+[ext_resource type="Texture2D" uid="uid://cuey83eas4wf5" path="res://Assets/Models/Snail_body.png" id="3_cyufb"]
 [ext_resource type="Script" uid="uid://cwdvbhewn43pl" path="res://Scripts/shell_state.gd" id="4_casb8"]
 [ext_resource type="Script" uid="uid://b3ralpw6qca8y" path="res://Scripts/move_state.gd" id="5_uqs8f"]
 
@@ -13,7 +14,6 @@ radius = 56.0
 [node name="Snail" type="CharacterBody2D" unique_id=1416113544]
 floor_stop_on_slope = false
 floor_max_angle = 1.6580628
-floor_snap_length = 5.0
 script = ExtResource("1_nsjvy")
 base_shell = ExtResource("2_5dokh")
 
@@ -21,6 +21,7 @@ base_shell = ExtResource("2_5dokh")
 position = Vector2(0, 18)
 
 [node name="TEMPModelRect" type="ColorRect" parent="BodyRoot" unique_id=260056710]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -39,6 +40,13 @@ offset_left = 79.0
 offset_top = -37.0
 offset_right = 123.0
 offset_bottom = 28.0
+
+[node name="BodyModel" type="Sprite2D" parent="BodyRoot" unique_id=1026493712]
+texture_filter = 1
+position = Vector2(5.9999995, -7.9999995)
+scale = Vector2(2.6, 2.6)
+texture = ExtResource("3_cyufb")
+offset = Vector2(5.06, -1.69)
 
 [node name="ShellRoot" type="Node2D" parent="." unique_id=1357483542]
 

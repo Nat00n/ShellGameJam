@@ -2,20 +2,29 @@
 
 [ext_resource type="Script" uid="uid://c6n7cwlpvnhsu" path="res://Scripts/start_menu.gd" id="1_jgtwh"]
 [ext_resource type="PackedScene" uid="uid://bio1ukmuqp3e0" path="res://Scenes/snail.tscn" id="1_juhg0"]
+[ext_resource type="Texture2D" uid="uid://53opas1iyn7q" path="res://Assets/Models/StartMenu.png" id="2_a43kq"]
+[ext_resource type="Texture2D" uid="uid://drorgrovthr3l" path="res://Assets/Models/Title.png" id="4_626he"]
+[ext_resource type="Texture2D" uid="uid://cibj4khvkscer" path="res://Assets/Models/Base_shell.png" id="5_626he"]
 
 [node name="StartMenu" type="CanvasLayer" unique_id=2133682344]
 script = ExtResource("1_jgtwh")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1375528630]
 
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=1051643734]
+position = Vector2(641.5, 359.5)
+scale = Vector2(2.0234375, 2.0138888)
+texture = ExtResource("2_a43kq")
+
 [node name="TerrainStaticBody2D" type="StaticBody2D" parent="Visuals" unique_id=1274787353]
+visible = false
 
 [node name="TerrainCollisionPolygon2D" type="CollisionPolygon2D" parent="Visuals/TerrainStaticBody2D" unique_id=644694505]
 position = Vector2(102, 82)
-polygon = PackedVector2Array(0, 2, 0, 2, -154, 369, -31, 612, 284, 717, 816, 718, 1040, 678, 1141, 542, 1130, 416, 1043, 255, 959, 277, 910, 313, 854, 353, 771, 370, 699, 379, 625, 341, 566, 303, 481, 295, 429, 314, 398, 356, 342, 379, 231, 383, 124, 355, 93, 331, 38, 269, 12, 171, -1, 62, 3, 23)
+polygon = PackedVector2Array(147, 15, -78, 4, -154, 369, -31, 612, 284, 717, 816, 718, 1040, 678, 1141, 542, 1130, 416, 1053, -37, 991, 14, 1048, 14, 1052, 209, 954, 211, 920, 217, 896, 231, 870, 257, 860, 288, 838, 309, 813, 309, 793, 321, 762, 320, 634, 320, 604, 311, 571, 307, 528, 277, 467, 243, 421, 224, 385, 224, 333, 222, 273, 223, 226, 233, 189, 250, 153, 275, 133, 299, 94, 318, 64, 304, 39, 271, -13, 220, -9, 13)
 
 [node name="Snail" parent="Visuals" unique_id=1416113544 instance=ExtResource("1_juhg0")]
-position = Vector2(275, 325)
+position = Vector2(430, 209)
 
 [node name="Title" type="Control" parent="." unique_id=964175928]
 layout_mode = 3
@@ -28,13 +37,9 @@ offset_right = 20.0
 offset_bottom = 140.0
 grow_horizontal = 2
 
-[node name="ColorRect" type="ColorRect" parent="Title" unique_id=860996867]
-layout_mode = 0
-offset_left = -329.0
-offset_top = -38.0
-offset_right = 328.0
-offset_bottom = 191.0
-color = Color(0.5219626, 0.6188458, 0.3641741, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Title" unique_id=1967294841]
+position = Vector2(195, 16)
+texture = ExtResource("4_626he")
 
 [node name="MainButtons" type="HBoxContainer" parent="." unique_id=1338100300]
 anchors_preset = 14
@@ -106,10 +111,10 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 64
 text = "~ Back ~"
 
-[node name="TransitionRect" type="ColorRect" parent="." unique_id=1148190174]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.32503468, 0.5708423, 1.92523e-07, 1)
+[node name="TransitionRect" type="Sprite2D" parent="." unique_id=1613791349]
+position = Vector2(578, 327)
+scale = Vector2(37.916668, 35.35)
+texture = ExtResource("5_626he")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2098818682]
+anchor_mode = 0

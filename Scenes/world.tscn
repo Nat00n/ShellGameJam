@@ -3,13 +3,21 @@
 [ext_resource type="Script" uid="uid://djihoguxqsypg" path="res://Scripts/world.gd" id="1_8j60k"]
 [ext_resource type="PackedScene" uid="uid://bio1ukmuqp3e0" path="res://Scenes/snail.tscn" id="1_go701"]
 [ext_resource type="PackedScene" uid="uid://csj1x7ncof15d" path="res://Scenes/shell_pickup.tscn" id="2_5a7ea"]
+[ext_resource type="Texture2D" uid="uid://bvlyswwb73s5j" path="res://Assets/Models/foreground.png" id="2_c5t2i"]
 [ext_resource type="Script" uid="uid://bmag77uugv6s1" path="res://Scripts/home_goal.gd" id="2_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://bvvyi3r0p1sak" path="res://Scenes/death_box.tscn" id="3_0fj1v"]
 [ext_resource type="Resource" uid="uid://bg6kd524dkffp" path="res://Resources/shotgun_shell.tres" id="3_5a7ea"]
+[ext_resource type="Texture2D" uid="uid://04nxlbscglbt" path="res://Assets/Models/background.png" id="3_kn0ld"]
+[ext_resource type="Texture2D" uid="uid://ble3so3o37q5a" path="res://Assets/Models/ShellHome.png" id="4_e0ngr"]
 [ext_resource type="Resource" uid="uid://q56shsf1vq7s" path="res://Resources/spiral_shell.tres" id="5_k7acu"]
 [ext_resource type="PackedScene" uid="uid://bhr6taryalgjs" path="res://Scenes/camera.tscn" id="6_5ukr8"]
 [ext_resource type="Resource" uid="uid://b3hlvh178j4nm" path="res://Resources/bag_shell.tres" id="6_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://y6veddyy8165" path="res://Scenes/pause_menu.tscn" id="9_5v1tr"]
+[ext_resource type="Texture2D" uid="uid://cibj4khvkscer" path="res://Assets/Models/Base_shell.png" id="10_7yui6"]
+[ext_resource type="PackedScene" uid="uid://l2k6hr63njes" path="res://Scenes/win_menu.tscn" id="11_ikia7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0fj1v"]
+radius = 40.0
 
 [node name="World" type="Node2D" unique_id=204577044]
 script = ExtResource("1_8j60k")
@@ -17,40 +25,96 @@ script = ExtResource("1_8j60k")
 [node name="TerrainStaticBody2D" type="StaticBody2D" parent="." unique_id=560596423]
 
 [node name="TerrainCollisionPolygon2D" type="CollisionPolygon2D" parent="TerrainStaticBody2D" unique_id=1627229694]
-polygon = PackedVector2Array(0, 2, 0, 2, -154, 369, -31, 612, 284, 717, 816, 718, 1040, 678, 1141, 542, 1130, 416, 1043, 255, 959, 277, 910, 313, 854, 353, 771, 370, 699, 379, 625, 341, 566, 303, 481, 295, 429, 314, 398, 356, 342, 379, 231, 383, 124, 355, 93, 331, 38, 269, 12, 171, -1, 62, 3, 23)
+position = Vector2(499, -705)
+scale = Vector2(3.74, 3.74)
+polygon = PackedVector2Array(-51, 108, -139, 181, -135, 318, -30, 340, 4, 318, 33, 318, 54, 322, 135, 383, 166, 395, 187, 396, 202, 392, 215, 386, 214.17111, 405.88232, 202.94116, 421.9251, 271.123, 428.877, 268.4492, 412.03207, 281.01602, 389.5722, 371.39035, 389.83957, 435.8289, 337.70053, 462.29947, 308.55615, 486.09622, 313.369, 601.3369, 318.98395, 664.7058, 353.20856, 654.2781, 386.09625, 689.57214, 386.631, 699.8696, 371.74512, 782.8877, 415.508, 975.13367, 450.53473, 976.4706, 532.8877, 785.5615, 537.7005, 433.42245, 536.8984, 425.40103, 643.0481, 374.33154, 672.1925, 364.4385, 757.754, 431.81815, 761.7647, 432.35294, 787.43317, 351.87164, 783.1551, 299.46524, 757.754, 74.8663, 714.97327, -133.42245, 709.89307, -171.65775, 743.3155, -171.92513, 915.7754, -13.36898, 917.1123, 34.491974, 1009.6257, 160.69519, 1016.3101, 161.76471, 882.3529, 249.7326, 918.71655, 630.4813, 974.06415, 790.37427, 974.06415, 777.8075, 883.9572, 760.9625, 831.01605, 736.8983, 810.1604, 714.4385, 796.52405, 713.63635, 683.6898, 782.0856, 683.1551, 832.62024, 730.74866, 929.6791, 735.5615, 973.79675, 694.91974, 1116.31, 697.3262, 1173.262, 672.9946, 1205.3475, 630.48126, 1228.877, 552.94116, 1219.2512, 491.17645, 1178.877, 417.64703, 1131.8181, 341.44385, 1018.71655, 317.91443, 987.1658, 278.34222, 984.7593, 190.10695, 745.45447, 17.379684, 515.2406, -39.30481, -20.053474, -33.155075, -64.70588, 52.941177, -85.56149, 20.320862, -72.192505, -58.556152, 373.79678, -107.48662, 779.6791, -68.98396, 1280.4812, 190.10695, 1277.8074, 1137.1658, 260.16043, 1151.6042, -198.93048, 1133.9572, -207.754, 979.14435, -209.09091, 761.2299, -156.95187, 438.77005, -176, 308, -172.45988, 152.13904, -73, 86, -52.941177, 6.684494, -51.930695, 59.42453)
 
-[node name="TerrainVisual" type="Polygon2D" parent="." unique_id=1439992346]
-
-[node name="StartPoint" type="Marker2D" parent="." unique_id=1451549483]
-position = Vector2(146, 95)
-
-[node name="Home" type="Area2D" parent="." unique_id=2112126650]
-script = ExtResource("2_fo5ed")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Home" unique_id=1738492201]
+[node name="TerrainCollisionPolygon2D2" type="CollisionPolygon2D" parent="TerrainStaticBody2D" unique_id=28110657]
+position = Vector2(499, -705)
+scale = Vector2(3.74, 3.74)
+polygon = PackedVector2Array(520.58826, 275.40106, 512.8342, 283.68982, 539.57214, 286.09625, 566.5775, 285.82886, 591.97864, 282.08557, 582.8877, 272.72726, 567.9144, 267.64706, 539.3048, 268.18182)
 
 [node name="DeathBoxes" type="Node" parent="." unique_id=1975530672]
 
 [node name="DeathBox" parent="DeathBoxes" unique_id=95898560 instance=ExtResource("3_0fj1v")]
-position = Vector2(1207, 477.00003)
+position = Vector2(1398, 902)
 scale = Vector2(16.325, 10.025)
+
+[node name="DeathBox4" parent="DeathBoxes" unique_id=184787541 instance=ExtResource("3_0fj1v")]
+position = Vector2(827, 3052)
+scale = Vector2(34.705, 17.17)
+
+[node name="DeathBox2" parent="DeathBoxes" unique_id=1955026865 instance=ExtResource("3_0fj1v")]
+position = Vector2(3013, 768.00006)
+scale = Vector2(10.465, 6.315)
+
+[node name="DeathBox3" parent="DeathBoxes" unique_id=1164363327 instance=ExtResource("3_0fj1v")]
+position = Vector2(3797, 1987)
+scale = Vector2(38.265, 6.315)
+
+[node name="ParallaxBackground" type="Parallax2D" parent="." unique_id=1948168192]
+scroll_scale = Vector2(1.01, 1.01)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground" unique_id=925957256]
+position = Vector2(2399.625, 1298.75)
+scale = Vector2(5.106836, 6.425694)
+texture = ExtResource("3_kn0ld")
+
+[node name="TerrainModel" type="Sprite2D" parent="." unique_id=1546883941]
+z_index = 1
+position = Vector2(2431.3599, 1303.9601)
+scale = Vector2(5.0411873, 6.699888)
+texture = ExtResource("2_c5t2i")
+
+[node name="StartPoint" type="Marker2D" parent="." unique_id=1451549483]
+position = Vector2(266, 124)
+
+[node name="Home" type="Area2D" parent="." unique_id=2112126650]
+position = Vector2(99, 2559)
+script = ExtResource("2_fo5ed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Home" unique_id=1738492201]
+scale = Vector2(4.98, 4.98)
+shape = SubResource("CircleShape2D_0fj1v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Home" unique_id=754800384]
+z_index = 1
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("4_e0ngr")
 
 [node name="Pickups" type="Node" parent="." unique_id=1416320917]
 
 [node name="ShellPickup" parent="Pickups" unique_id=789797842 instance=ExtResource("2_5a7ea")]
-position = Vector2(277, 313)
+position = Vector2(2569, 226)
+upgrade = ExtResource("3_5a7ea")
+
+[node name="ShellPickup5" parent="Pickups" unique_id=1145199468 instance=ExtResource("2_5a7ea")]
+position = Vector2(4384, 1816)
 upgrade = ExtResource("3_5a7ea")
 
 [node name="ShellPickup2" parent="Pickups" unique_id=902780424 instance=ExtResource("2_5a7ea")]
-position = Vector2(946, 205)
+position = Vector2(1731, 670)
+upgrade = ExtResource("5_k7acu")
+
+[node name="ShellPickup4" parent="Pickups" unique_id=1152149209 instance=ExtResource("2_5a7ea")]
+position = Vector2(2027, 2036)
 upgrade = ExtResource("5_k7acu")
 
 [node name="ShellPickup3" parent="Pickups" unique_id=1189689166 instance=ExtResource("2_5a7ea")]
-position = Vector2(566, 230)
+position = Vector2(3813, 1678)
 upgrade = ExtResource("6_5v1tr")
 
+[node name="ShellPickup6" parent="Pickups" unique_id=1363824481 instance=ExtResource("2_5a7ea")]
+position = Vector2(836, 2528)
+upgrade = ExtResource("6_5v1tr")
+
+[node name="ShellPickup7" parent="Pickups" unique_id=128430609 instance=ExtResource("2_5a7ea")]
+position = Vector2(3348, 2861)
+upgrade = ExtResource("3_5a7ea")
+
 [node name="Snail" parent="." unique_id=335318603 instance=ExtResource("1_go701")]
-position = Vector2(146, 96)
+z_index = 2
+position = Vector2(1080, 385)
 
 [node name="Camera2D" parent="." unique_id=1123971087 node_paths=PackedStringArray("target") instance=ExtResource("6_5ukr8")]
 target = NodePath("../Snail")
@@ -68,13 +132,13 @@ offset_bottom = 23.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 
-[node name="TransitionRect" type="ColorRect" parent="HUD" unique_id=1770355220]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.32503468, 0.5708423, 1.92523e-07, 1)
+[node name="TransitionRect" type="Sprite2D" parent="HUD" unique_id=23876003]
+position = Vector2(653.99994, 349)
+scale = Vector2(34.066666, 31.13333)
+texture = ExtResource("10_7yui6")
 
 [node name="PauseMenu" parent="." unique_id=704669719 instance=ExtResource("9_5v1tr")]
+visible = false
+
+[node name="WinMenu" parent="." unique_id=188471270 instance=ExtResource("11_ikia7")]
 visible = false

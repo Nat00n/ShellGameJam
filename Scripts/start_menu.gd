@@ -13,10 +13,11 @@ extends CanvasLayer
 @onready var exit_button: Button = $MainButtons/ExitButton
 @onready var back_button: Button = $Extras/BackButton
 
-@onready var transition_rect: ColorRect = $TransitionRect
+@onready var transition_rect: Sprite2D = $TransitionRect
+const AUTUMN_FOREST = preload("uid://drlsvypldgwxw")
 
 func _ready() -> void:
-	transition_rect.pivot_offset = transition_rect.size / 2.0
+	AudioManager.play_music(AUTUMN_FOREST)
 	transition_rect.scale = Vector2.ZERO
 	transition_rect.rotation = 0.0
 	
@@ -29,7 +30,7 @@ func _on_start_pressed() -> void:
 	main_buttons.hide()
 
 	var tween := create_tween()
-	tween.tween_property(transition_rect, "scale", Vector2.ONE, transition_duration)\
+	tween.tween_property(transition_rect, "scale", Vector2(38,38), transition_duration)\
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(transition_rect, "rotation", transition_spin, transition_duration)
 	tween.finished.connect(_on_transition_covered)

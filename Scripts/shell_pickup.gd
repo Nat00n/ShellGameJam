@@ -7,6 +7,7 @@ extends Area2D
 
 @onready var visual_root: Node2D = $VisualRoot
 @onready var collision: CollisionShape2D = $CollisionShape2D
+const POWER_UP = preload("uid://degj4kct7xsur")
 
 var is_available: bool = true
 var respawn_tween: Tween
@@ -41,6 +42,7 @@ func _on_body_entered(body: Node) -> void:
 		_collect()
 
 func _collect() -> void:
+	AudioManager.play_sfx(POWER_UP)
 	is_available = false
 	collision.set_deferred("disabled", true)
 	visual_root.scale = Vector2.ZERO
